@@ -1,103 +1,76 @@
-AgenticRAG – Enterprise Multi-Modal AI Assistant
+# AgenticRAG – Secure Enterprise Multi-Modal AI Assistant
 
-AgenticRAG is an enterprise-grade, agent-based Generative AI system that allows users to query structured data (SQL) and unstructured data (PDFs, Excel, Images, Text) using natural language.
-The system combines Agentic workflows, RAG (Retrieval-Augmented Generation), and secure API access to deliver accurate, explainable answers.
+## Project Title
+**AgenticRAG**  
+(GenAI-Secure-Agentic-GenAI-Knowledge-System)
 
-Key Capabilities
-1. Natural Language to SQL Querying
+A secure, agent-based Generative AI system that lets non-technical users ask natural language questions to get answers from both your company database **and** all your documents — without writing any SQL or searching files manually.
 
-Users can ask questions in plain English, and the system intelligently converts them into valid SQL queries and executes them on a connected MySQL database.
+## Description
+AgenticRAG is an enterprise-ready AI assistant that combines:
 
-Example use cases:
+- **Natural Language to SQL** → Ask business questions in plain English, get accurate answers from your MySQL database  
+- **Multi-Modal RAG** → Ask questions about PDFs (policies, reports), Excel sheets (financials, KPIs), scanned images (invoices, forms), and text files — the system understands and retrieves relevant content automatically  
+- **Agentic Architecture** → Smart agents decide whether the question needs database access, document search, or general reasoning  
+- **Secure Access** → Protected by JWT authentication so only authorized people can ask questions  
 
-Fetching top-paid employees
+You talk to it like a very smart colleague who already read all your documents and has full access to the company database.
 
-Aggregations like totals, averages, rankings
+## Tech Stack (High-Level)
+- Backend: FastAPI  
+- User Interface: Streamlit (simple chat-like experience)  
+- Agents & Logic: Agentic workflow (router + SQL agent + RAG agent + safety checks)  
+- Database: MySQL (easy to connect your own)  
+- Document Understanding: PDF, Excel, OCR (for images/scanned docs), vector embeddings  
+- Authentication: JWT tokens  
+- Designed to be modular and configurable via environment settings  
 
-Table-level analytical queries
+## How It Gives Value to Your Organization
 
-2. Multi-Modal RAG (Retrieval-Augmented Generation)
+| Value Delivered                              | Real-World Benefit                                                                 |
+|----------------------------------------------|-------------------------------------------------------------------------------------|
+| Non-technical users get fast answers         | Managers, HR, finance, sales teams no longer wait for analysts or IT               |
+| Single place for database + documents        | No more switching between Excel, PDFs, shared drives, and BI tools                 |
+| Reduces dependency on developers/analysts    | Ad-hoc questions answered in seconds instead of hours/days                         |
+| Safer data access                            | Controlled via login — no direct database or file access given to end users        |
+| Handles multi-modal content                  | Can read scanned invoices, whiteboards, handwritten notes, charts in PDFs         |
+| Audit-friendly & explainable                 | Shows reasoning, generated SQL (if enabled), and document sources                  |
+| Scales to enterprise needs                   | JWT + modular agents → easy to add roles, more databases, conversation memory     |
 
-The system supports querying knowledge from multiple document types:
+In short:  
+It turns your scattered company knowledge (database + documents) into one natural-language interface that anyone in the organization can use securely and productively.
 
-PDF documents (policies, reports, manuals)
+## Usages – What People Actually Ask It
 
-Excel files (structured reports, analytics sheets)
+**Database / Business Analytics Questions**  
+- Who are our top 10 highest-paid employees this year?  
+- What is average salary by department in last 12 months?  
+- Show total sales per product category for Q1–Q3  
+- Compare revenue this year vs last year same period  
 
-Images (via OCR for scanned documents)
+**Document & Policy Questions**  
+- What is our current remote work policy?  
+- Summarize the key points from the latest board report  
+- What are the rules for maternity leave?  
+- Explain our leave encashment policy in simple words  
 
-Plain text files
+**Excel & Financial Data Questions**  
+- What was total marketing spend in FY 2024–25?  
+- Show me travel expenses breakdown for last quarter  
+- How many new clients did we onboard in 2025?  
 
-Relevant content is retrieved from a vector database and used to generate grounded, context-aware answers.
+**Scanned / Image-Based Questions**  
+- How much GST is charged on this invoice?  
+- What is the due date on this scanned bill?  
+- Extract vendor name and amount from this receipt image  
 
-3. Agent-Based Architecture
+**Mixed / Smart Questions**  
+- Which departments have average salary above 8 lakhs? And what does HR policy say about salary bands?  
+- Summarize Q3 performance and compare revenue numbers with last year  
 
-The project follows an Agentic design, where responsibilities are clearly separated:
+Just type normal questions — the system automatically decides whether to look in the database, search documents, or combine both.
 
-Query Agent – Understands user intent and routes the query
+Perfect for:  
+Finance teams • HR • Operations • Management • Anyone tired of digging through files and asking IT for reports.
 
-SQL Agent – Handles database-related questions
-
-RAG Agent – Retrieves and reasons over document data
-
-Guard / Validation Logic – Ensures safe and valid execution
-
-This architecture makes the system modular, scalable, and enterprise-ready.
-
-4. Secure Access Using JWT Authentication
-
-Access to the system is protected using JWT (JSON Web Token) authentication.
-
-Users must log in to obtain a token
-
-Only authorized users can query data
-
-Easy to extend for role-based access (admin / user)
-
-This prevents unauthorized access to sensitive databases and documents.
-
-5. Database Agnostic Design
-
-The system is designed so that any user can connect their own database by simply updating environment configuration.
-
-No code changes required
-
-Supports MySQL (can be extended to others)
-
-Configuration-driven setup
-
-6. API + UI Separation
-
-Backend: FastAPI handles authentication, query processing, and agent orchestration
-
-Frontend: Streamlit provides a simple UI for interacting with the system
-
-This separation allows easy deployment, scaling, and future UI upgrades.
-
-Data Ingestion Workflow
-
-Documents are placed inside a designated data directory
-
-An ingestion process extracts text from files
-
-Content is converted into embeddings
-
-Embeddings are stored in a vector database
-
-User questions retrieve relevant chunks at query time
-
-Once ingested, documents can be queried using natural language without referencing file names.
-
-Supported Question Types
-
-SQL questions on database tables
-
-Questions based on company documents
-
-Summaries of PDFs or reports
-
-Information extraction from Excel sheets
-
-Text extraction and understanding from images
-
-General AI questions (LLM-only mode)
+Secure. Fast. Useful. Every day.
